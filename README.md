@@ -1,12 +1,18 @@
 # euler
 
-I'm an app. Or maybe I'm a library? I haven't decided yet. 
-
-The choice is up to you!
+My Clojure solutions to the problems from ProjectEuler.net
 
 ## Usage
 
-FIXME
+Install java and lein, then
+
+```
+$ lein repl
+user=> (use 'euler.core)
+nil
+user=> (euler-1)
+233168
+```
 
 ## License
 
