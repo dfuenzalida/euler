@@ -10,7 +10,7 @@
 (defn euler-25[]
   (loop [i 2 fibs [1 1]]
     (let [new-fib (+' (last (butlast fibs)) (last fibs))]
-      (if (= (.length (str new-fib)) 1000) ;; more than 999 digits
+      (if (= (.length (str new-fib)) 1000) ;; 1000 digits
         (inc i)
         (recur (inc i) (conj fibs new-fib))
       ))))
