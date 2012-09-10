@@ -21,8 +21,8 @@
      position))
 
   (defn names-to-list[]
-    (def names-string (vec (.split (slurp "names.txt") ",")))
-    (map #(.substring %1 1 (- (.length %1) 1)) names-string))
+    (clojure.string/split
+     (clojure.string/replace (slurp "names.txt") "\"" "") #","))
 
   (def names
     (vec (sort (names-to-list))))
