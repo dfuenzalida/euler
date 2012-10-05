@@ -1,6 +1,5 @@
 (ns euler.problem36)
 
-
 (defn euler-36 []
 
   (defn palin? [x] (= (apply str (reverse x)) x))
