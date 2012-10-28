@@ -14,10 +14,9 @@
   ;; user=> (merge-with + {:uno 1 :dos 1 :tres 2} {:dos 1 :tres 1 :cuatro 4})
   ;; {:cuatro 4, :tres 3, :uno 1, :dos 2}
 
-  ;; this is a trick to define a memoized function, which I'll
-  ;; redefine later
-  (defn comb2[n] (set [])) ;; not used
-  (def comb-memo (memoize comb2)) ;; just to hold the name for now
+  (defn comb[n] (+ 0 n))
+
+  (def comb-memo (memoize comb))
 
   ;; receive combinations of change and n money yet to be combined
   (defn comb[n]
@@ -33,9 +32,6 @@
                 (for [c [{coin 1}] x restcombs] (merge-with + c x))]
             (recur (rest coins) (apply conj combs newcombs)))
           combs))))
-
-  ;; redefine comb-memo to use memoization of the fn, for speed boost
-  (def comb-memo (memoize comb))
 
   (count (comb 200)))
 
