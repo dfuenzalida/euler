@@ -17,7 +17,13 @@
         (BigInteger. (last-n 10 (str x)))
         (recur (inc i) (BigInteger. (last-n 10 (str (*' x n))))))))
 
-  (last-n 10 (str (apply +' (map term (range 1 1001)))))
+  ;; LONG VERSION
+  ;;(last-n 10 (str (apply +' (map term (range 1 1001)))))
+
+  ;; SHORT VERSION (one liner)
+  (rem
+   (apply +' (map #(.pow (BigInteger. (str %)) %) (range 1 1001)))
+   10000000000)
   )
 
 (println (euler-48))
