@@ -12,8 +12,6 @@
   (first (map
    #(- (penta (first %)) (penta (second %)))
    (filter both-penta?
-           (for [x (range 1 3001) y (range 1 3001) :while (< y x)] [x y]))))
-
-  )
+           (for [x (range 1 3001) y (range 1 3001) :while (< y x)] [x y])))))
 
 (println (euler-44))
