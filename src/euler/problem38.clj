@@ -3,8 +3,7 @@
 (defn euler-38 []
 
   (defn pandigital? [n]
-    (and (not (nil? n))
-         (= (sort (seq (str n))) [\1 \2 \3 \4 \5 \6 \7 \8 \9])))
+    (= (sort (seq (str n))) [\1 \2 \3 \4 \5 \6 \7 \8 \9]))
 
   (defn conc-product [n]
     (loop [i 1 prod ""]
