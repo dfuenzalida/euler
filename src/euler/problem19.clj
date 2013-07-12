@@ -2,28 +2,19 @@
   (:import (java.util Calendar Locale TimeZone)
            (java.text SimpleDateFormat)))
 
+;; How many Sundays fell on the first of the month during the twentieth century
+;; (1 Jan 1901 to 31 Dec 2000)?
+
 (defn euler-19 []
 
-  (defn get-days []
-    (def sdf-yyyy (SimpleDateFormat. "dd/MM/yyyy"))
-    (def sdf-week (SimpleDateFormat. "EEE" Locale/US))
+  (def datefmt (SimpleDateFormat. "dd/MM/yyyy"))
+  (def weekday (SimpleDateFormat. "EEE" Locale/US))
 
-    (def start (Calendar/getInstance))
-    (.setTime start (.parse sdf-yyyy "01/01/1901"))
+  (count
+   (for [y (range 1901 2001) m (range 1 (inc 12))
+         :when (= "Sun" (.format weekday (.parse datefmt (format "01/%02d/%04d" m y))))]
+     [:anything])))
 
-    (def end (Calendar/getInstance))
-    (.setTime end (.parse sdf-yyyy "31/12/2000"))
-
-    (loop [days []]
-      (if (.after start end) days
-          (do
-            (.add start Calendar/MONTH 1)
-            (recur
-             (conj days (.format sdf-week (.getTime start)))
-             )))))
-
-  (count (filter #(= "Sun" %1) (get-days))))
-
-;; lein repl
-;; (use 'euler.problem19)
-;; (euler-19)
+;; $ lein repl
+;; user=> (use 'euler.problem19)
+;; user=> (euler-19)
