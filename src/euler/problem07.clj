@@ -1,4 +1,6 @@
-(ns euler.problem7)
+(ns euler.problem07)
+
+;; What is the 10001st prime number?
 
 (defn euler-7 []
 
