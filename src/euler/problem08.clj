@@ -1,9 +1,9 @@
-(ns euler.problem8)
+(ns euler.problem08)
+
+;; Find the greatest product of five consecutive digits in
+;; the 1000-digit number:
 
 (defn euler-8 []
-
-  ;; Find the greatest product of five consecutive digits in
-  ;; the 1000-digit number:
 
   (def number [
                "73167176531330624919225119674426574742355349194934"
@@ -28,9 +28,11 @@
                "71636269561882670428252483600823257530420752963450"
                ])
 
-  ;; turns number into large string, splits chars and converts to numbers
+  ;; turns number into large string, converts chars to a seq of numbers
+  ;; eg. (as-digits ["12" "345"]) => (1 2 3 4 5)
+
   (defn as-digits [number]
-    (map #(- (int %1) (int \0)) (vec (apply str number))))
+    (map #(- (int %1) (int \0)) (apply str number)))
 
   ;; find the max from:
   ;; pick up to 5 digits sequentially from digits, multiply them
