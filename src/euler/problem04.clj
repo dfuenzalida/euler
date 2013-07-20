@@ -1,4 +1,4 @@
-(ns euler.problem4)
+(ns euler.problem04)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; A palindromic number reads the same both ways.
@@ -14,9 +14,4 @@
 
   ;; max elem on a double loop from 100 to 999 looking for palindromes
   (reduce max
-   (loop [x 100 y 100 palindromes []]
-         (if (palin? (* x y))
-             (recur (inc x) y (conj palindromes (* x y)))
-           (if (> x 999) (recur 100 (inc y) palindromes)
-             (if (> y 999) palindromes
-               (recur (inc x) y palindromes)))))))
+    (for [x (range 100 1000) y (range 100 1000) :when (palin? (* x y))] (* x y))))
