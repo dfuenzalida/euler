@@ -10,8 +10,10 @@
 (defn euler-4 []
 
   ;; convert number to seq, compare it to the seq's reverse
-  (defn palin? [x] (= (seq (str x)) (reverse (seq (str x)))))
+  (defn palin? [x] (= (seq (str x)) (reverse (str x))))
 
   ;; max elem on a double loop from 100 to 999 looking for palindromes
   (reduce max
-    (for [x (range 100 1000) y (range 100 1000) :when (palin? (* x y))] (* x y))))
+    (for [x (range 100 1000) y (range 100 1000)
+          :let [prod (* x y)]
+          :when (palin? prod)] prod)))

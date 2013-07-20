@@ -10,6 +10,6 @@
 
 (defn euler-9 []
   (for [x (range 1 1000) y (range x 1000)
-        :when (= (+ (* x x) (* y y))
-                 (* (- 1000 x y) (- 1000 x y)))]
-    (* x y (- 1000 x y))))
+        :let [z (- 1000 x y)]
+        :when (= (+ (* x x) (* y y)) (* z z))]
+    (* x y z)))
