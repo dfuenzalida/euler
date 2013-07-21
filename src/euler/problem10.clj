@@ -19,7 +19,7 @@
             (recur (conj primes current) (+ 2 current))
             (recur primes (+ 2 current))))))
 
-  (apply + (primes-up-to 2000000)))
+  (reduce + (primes-up-to 2000000)))
 
 (println (euler-10))
 
